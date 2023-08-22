@@ -23,7 +23,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 			
 			Map<String, Object> jsonResponse = new HashMap<>();
 	        jsonResponse.put("status", HttpServletResponse.SC_FORBIDDEN);
-	        jsonResponse.put("message", "Access Denied: You do not have the necessary permissions.");
+	        jsonResponse.put("message", "Access Denied: You do not have the necessary permissionsss.");
 			
 	        Gson gson = new Gson();
 	        String jsonString = gson.toJson(jsonResponse);
