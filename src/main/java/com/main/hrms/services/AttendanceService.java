@@ -39,6 +39,7 @@ public class AttendanceService {
 			attendance.setEmployeeid(requestMeta.getUserid());
 			attendance.setDate(CurrentDateTime.getFormattedDate());
 			attendance.setCheckintime(CurrentDateTime.getFormattedTime());
+			System.out.println("Time:          " + CurrentDateTime.getFormattedTime());
 			return Optional.of(attendancerepository.save(attendance));
 		}	
 	}
