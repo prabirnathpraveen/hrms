@@ -31,7 +31,7 @@ public class SalaryController {
 	}
 	
 	@GetMapping("/salary/{id}")
-	public ResponseEntity<Salary> getData(@PathVariable("id") Integer id) {
+	public ResponseEntity<Salary> getData(@PathVariable Integer id) {
 		Optional<Salary>salary = salaryservice.getData(id);
 	    if (salary.isPresent()) {
 	        return new ResponseEntity<>(salary.get(), HttpStatus.OK);
@@ -63,7 +63,7 @@ public class SalaryController {
 	
 	
 	@DeleteMapping("/deletesalary/{id}")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return salaryservice.deleteData(id);
 	}
 }

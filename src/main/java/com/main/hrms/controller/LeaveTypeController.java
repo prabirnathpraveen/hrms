@@ -32,7 +32,7 @@ public class LeaveTypeController {
 	}
 	
 	@GetMapping("/leavetype/{id}")
-	public ResponseEntity<LeaveType> getleavetype(@PathVariable("id") Integer id) {
+	public ResponseEntity<LeaveType> getleavetype(@PathVariable Integer id) {
 		Optional<LeaveType> leavetype = leavetypeservice.getData(id);
 	    if (leavetype.isPresent()) {
 	        return new ResponseEntity<>(leavetype.get(), HttpStatus.OK);
@@ -42,7 +42,7 @@ public class LeaveTypeController {
 	}
 	
 	@DeleteMapping("/deleteleavetype/{id}")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return leavetypeservice.deleteData(id);
 	}
 	

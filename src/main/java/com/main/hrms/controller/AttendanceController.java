@@ -33,7 +33,7 @@ public class AttendanceController {
 	}
 	
 	@GetMapping("/attendance/{id}")
-	public ResponseEntity<Attendance> getData(@PathVariable("id") Integer id) {
+	public ResponseEntity<Attendance> getData(@PathVariable Integer id) {
 		Optional<Attendance>attendance = attendanceservice.getData(id);
 	    if (attendance.isPresent()) {
 	        return new ResponseEntity<>(attendance.get(), HttpStatus.OK);
@@ -43,31 +43,30 @@ public class AttendanceController {
 	}
 	
 	
-	@PostMapping("/insertattendance")
+	@PostMapping("/checkin")
 	public String insert(@RequestBody Attendance attendance){
 		Optional<Attendance>_leave = attendanceservice.insertData(attendance);
 		if(_leave.isPresent()) {
-			return "The Leave Data Saved Successfully";
+			return "The Data Saved Successfully";
 		}else {
-			return "Leave Already Exist";
+			return "You check in entry Already Exist";
 		}
 	}
 	
-	@PutMapping("/updateattendance")
-	@PreAuthorize("hasAuthority('ROLE_HR')")
+	@PutMapping("/checkout")
 	public String update(@RequestBody Attendance attendance){
 		Optional<Attendance>_leave = attendanceservice.updateData(attendance);
 		if(_leave.isEmpty()) {
-			return "The Leave Data Does Not Exist";
+			return "The Check Out Already Done or Check In Not Found";
 		}else {
-			return "The Leave Data Updated Successfully";
+			return "Check Out Done Successfully";
 		}
 	}
 	
 	
 	@DeleteMapping("/deleteattendance/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return attendanceservice.deleteData(id);
 	}
 }

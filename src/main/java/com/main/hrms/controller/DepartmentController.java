@@ -32,7 +32,7 @@ public class DepartmentController {
 	}
 	
 	@GetMapping("/department/{id}")
-	public ResponseEntity<Department> getDepartment(@PathVariable("id") Integer id) {
+	public ResponseEntity<Department> getDepartment(@PathVariable Integer id) {
 		Optional<Department> department = departmentservice.getData(id);
 	    if (department.isPresent()) {
 	        return new ResponseEntity<>(department.get(), HttpStatus.OK);
@@ -42,7 +42,7 @@ public class DepartmentController {
 	}
 	
 	@GetMapping("/department/name/{name}")
-    public ResponseEntity<List<Department>> getDepartmentsByName(@PathVariable("name") String name) {
+    public ResponseEntity<List<Department>> getDepartmentsByName(@PathVariable String name) {
         List<Department> departments = departmentservice.getDepartmentsByName(name);
         if (!departments.isEmpty()) {
             return new ResponseEntity<>(departments, HttpStatus.OK);
@@ -52,7 +52,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/location/{location}")
-    public ResponseEntity<List<Department>> getDepartmentsByLocation(@PathVariable("location") String location) {
+    public ResponseEntity<List<Department>> getDepartmentsByLocation(@PathVariable String location) {
         List<Department> departments = departmentservice.getDepartmentsByLocation(location);
         if (!departments.isEmpty()) {
             return new ResponseEntity<>(departments, HttpStatus.OK);
@@ -87,7 +87,7 @@ public class DepartmentController {
 	
 	@DeleteMapping("/deleteDepartment/{id}")
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return departmentservice.deleteData(id);
 	}
 }

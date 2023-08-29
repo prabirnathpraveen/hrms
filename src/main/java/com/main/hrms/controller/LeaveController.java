@@ -33,7 +33,7 @@ public class LeaveController {
 	
 	@GetMapping("/leave/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public ResponseEntity<Leaves> getData(@PathVariable("id") Integer id) {
+	public ResponseEntity<Leaves> getData(@PathVariable Integer id) {
 		Optional<Leaves>leaves = leaveservice.getData(id);
 	    if (leaves.isPresent()) {
 	        return new ResponseEntity<>(leaves.get(), HttpStatus.OK);
@@ -67,7 +67,7 @@ public class LeaveController {
 	
 	@DeleteMapping("/deleteleave/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return leaveservice.deleteData(id);
 	}
 }

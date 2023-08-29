@@ -30,7 +30,7 @@ public class LoginService {
 
     public Optional<Employee> authenticate(Login login) {
 		Optional<Employee> employees = employeeRepository.findByEmailid(login.getEmailid());
-		if (!employees.isEmpty()) {
+		if (employees.isPresent()) {
             Employee employee = employees.get();
             if(check(employee.getPasswordhash(),login.getPassword())) {
             	return employees;

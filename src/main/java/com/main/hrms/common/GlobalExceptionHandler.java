@@ -35,7 +35,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> jsonResponse = new HashMap<>();
         jsonResponse.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         jsonResponse.put("message", "An error occurred while processing the request.");
-        
+        ex.printStackTrace();
         Gson gson = new Gson();
         String jsonString = gson.toJson(jsonResponse);
         

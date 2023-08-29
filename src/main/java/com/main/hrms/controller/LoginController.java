@@ -31,7 +31,7 @@ public class LoginController {
     @PostMapping("/authenticate")
     public String authenticateAndGetToken(@RequestBody Login login , HttpServletResponse response){
     	Optional<Employee> emp = loginservice.authenticate(login);
-    	if (!emp.isEmpty()) {
+    	if (emp.isPresent()) {
             Employee employee = emp.get();
             String token =  jwtservice.generateToken(employee.getEmailid(),employee.getFirstname());
             Cookie cookie = new Cookie("authToken", token);

@@ -50,7 +50,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 		        }
 		    }
 		    
-		    //
 	        String token = null;
 	        String email = null;
 	        try {

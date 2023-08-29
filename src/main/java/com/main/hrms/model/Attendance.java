@@ -1,5 +1,6 @@
 package com.main.hrms.model;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
@@ -13,9 +14,16 @@ public class Attendance {
 	private int employeeid;
 	private LocalTime checkintime;
 	private LocalTime checkouttime;
-	private LocalTime workinghours;
+	private String workinghours;
 	private boolean ispresent;
+	private LocalDate date;
 	
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 	public boolean isIspresent() {
 		return ispresent;
 	}
@@ -46,10 +54,10 @@ public class Attendance {
 	public void setCheckouttime(LocalTime checkouttime) {
 		this.checkouttime = checkouttime;
 	}
-	public LocalTime getWorkinghours() {
+	public String getWorkinghours() {
 		return workinghours;
 	}
-	public void setWorkinghours(LocalTime workinghours) {
+	public void setWorkinghours(String workinghours) {
 		this.workinghours = workinghours;
 	}
 	

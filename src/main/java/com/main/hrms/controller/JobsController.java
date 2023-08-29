@@ -31,7 +31,7 @@ public class JobsController{
 	}
 	
 	@GetMapping("/jobs/{id}")
-	public ResponseEntity<Jobs> getJobs(@PathVariable("id") Integer id) {
+	public ResponseEntity<Jobs> getJobs(@PathVariable Integer id) {
 		Optional<Jobs> jobs = jobservice.getData(id);
 	    if (jobs.isPresent()) {
 	        return new ResponseEntity<>(jobs.get(), HttpStatus.OK);
@@ -42,7 +42,7 @@ public class JobsController{
 	
 	@DeleteMapping("/deletejobs/{id}")
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return jobservice.deleteData(id);
 	}
 	

@@ -34,7 +34,7 @@ public class TrainingController {
 	
 	@GetMapping("/training/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public ResponseEntity<Training> getData(@PathVariable("id") Integer id) {
+	public ResponseEntity<Training> getData(@PathVariable Integer id) {
 		Optional<Training>trainings = trainingservice.getData(id);
 	    if (trainings.isPresent()) {
 	        return new ResponseEntity<>(trainings.get(), HttpStatus.OK);
@@ -69,7 +69,7 @@ public class TrainingController {
 	
 	@DeleteMapping("/deletetrainee/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return trainingservice.deleteData(id);
 	}
 }

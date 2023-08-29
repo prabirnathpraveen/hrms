@@ -34,7 +34,7 @@ public class PerformanceReviewController {
 	
 	@GetMapping("/review/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public ResponseEntity<PerformanceReview> getData(@PathVariable("id") Integer id) {
+	public ResponseEntity<PerformanceReview> getData(@PathVariable Integer id) {
 		Optional<PerformanceReview>review = reviewservice.getData(id);
 	    if (review.isPresent()) {
 	        return new ResponseEntity<>(review.get(), HttpStatus.OK);
@@ -69,7 +69,7 @@ public class PerformanceReviewController {
 	
 	@DeleteMapping("/deletereview/{id}")
 	@PreAuthorize("hasAuthority('ROLE_HR')")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable int id){
 		return reviewservice.deleteData(id);
 	}
 }
